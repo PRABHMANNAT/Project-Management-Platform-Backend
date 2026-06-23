@@ -5,8 +5,8 @@ const sendEmail = async (options) => {
   const mailGenerator = new Mailgen({
     theme: "default",
     product: {
-      name: "App",
-      link: "https://app.com",
+      name: "Task Manager",
+      link: "https://taskmanagerlink.com",
     },
   });
 
@@ -22,13 +22,22 @@ const sendEmail = async (options) => {
     },
   });
 
-  await transporter.sendMail({
-    from: process.env.MAILTRAP_SMTP_USER,
+  const mail = {
+    from: "mail.taskmanager@example.com",
     to: options.email,
     subject: options.subject,
     text: emailText,
     html: emailHtml,
-  });
+  };
+
+  try {
+    await transporter.sendMail(mail);
+  } catch (error) {
+    console.error(
+      "Email service failed silently. Make sure that you have provided your MAILTRAP credentials in the .env file",
+    );
+    console.error("Error: ", error);
+  }
 };
 
 const emailVerificationMailgenContent = (username, verificationUrl) => {
@@ -37,7 +46,8 @@ const emailVerificationMailgenContent = (username, verificationUrl) => {
       name: username,
       intro: "Welcome to our App! We're excited to have you on board.",
       action: {
-        instructions: "To verify your email please click on the following button",
+        instructions:
+          "To verify your email please click on the following button",
         button: {
           color: "#e59e9e",
           text: "Verify your email",
