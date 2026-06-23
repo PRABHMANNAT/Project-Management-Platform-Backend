@@ -1,11 +1,24 @@
+import dns from "node:dns";
 import dotenv from "dotenv";
 import app from "./app.js";
+import connectDB from "./db/index.js";
+
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
+dns.setDefaultResultOrder("ipv4first");
+
 dotenv.config({
   path: "./.env",
 });
-const app = express();
+
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log(`Example app listening on port http://localhost:${port}`);
-});
+connectDB()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error", err);
+    process.exit(1);
+  });
