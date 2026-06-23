@@ -31,6 +31,6 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Package lock (keep package-lock.json, ignore yarn/pnpm locks if not used)
+# Lock files (keep package-lock.json only)
 yarn.lock
 pnpm-lock.yaml
