@@ -1,0 +1,31 @@
+{
+  "name": "backend-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js",
+    "prabh": "node prabh.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PRABHMANNAT/Project-Management-Platform-Backend.git"
+  },
+  "keywords": [
+    "Backend",
+    "API",
+    "creation",
+    "Learning",
+    "Lectures"
+  ],
+  "author": "Prabhmannat Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PRABHMANNAT/Project-Management-Platform-Backend/issues"
+  },
+  "homepage": "https://github.com/PRABHMANNAT/Project-Management-Platform-Backend#readme",
+  "devDependencies": {
+    "prettier": "3.8.4"
+  }
+}
