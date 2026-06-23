@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "node index.js",
-    "prabh": "node prabh.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "prabh": "node src/prabh.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,11 @@
   },
   "homepage": "https://github.com/PRABHMANNAT/Project-Management-Platform-Backend#readme",
   "devDependencies": {
+    "nodemon": "^3.1.14",
     "prettier": "3.8.4"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
   }
 }
