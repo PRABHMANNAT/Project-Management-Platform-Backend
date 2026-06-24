@@ -80,6 +80,14 @@ const login = asyncHandler(async (req, res) => {
   if (!user) {
     throw new ApiError(400, "User does not exist");
   }
+
+  const isPasswordValid = await user.isPasswordCorrect(password);
+
+  if (!isPasswordValid) {
+    throw new ApiError(400, "Invalid credentials");
+  }
+
+  const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(user._id);
 });
 
 export { registerUser, login };
